@@ -40,7 +40,7 @@ function App() {
       // Construct b64 version of clientId:clientSecret
       const clientB64 = Buffer.from(`${clientId}:${clientSecret}`).toString('base64');
 
-      // Intiate flow and redirect to Okta IDP
+      // Intiate flow and redirect to Google IDP
       const authUrl = `https://${domain}/${oauthProxyPath}/authorize?client_id=${clientId}&response_type=code&scope=${scopes}&redirect_uri=${redirectUrl}`;
       console.log(`authUrl: ${authUrl}`);
 
@@ -49,7 +49,7 @@ function App() {
       console.log(`authCode: ${authCode}`);
 
       // Use auth code, among other vars, to get the token now
-      const tokenUrl = `https://${domain}/${oauthProxyPath}/accesstoken?client_id=${clientId}`;
+      const tokenUrl = `https://${domain}/${oauthProxyPath}/accesstoken`;
       const tokenBody = new URLSearchParams({
         redirect_uri: redirectUrl,
         grant_type: 'authorization_code',
