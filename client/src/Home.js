@@ -50,13 +50,15 @@ function App() {
 
       // Use auth code, among other vars, to get the token now
       const tokenUrl = `https://${domain}/${oauthProxyPath}/accesstoken`;
-      const tokenBody = new URLSearchParams({
+      const tokenBody = {
         redirect_uri: redirectUrl,
         grant_type: 'authorization_code',
-        code: authCode
-      });
+        code: authCode,
+        client_id: clientId,
+        client_secret: clientSecret
+      };
       const tokenHeaders = {
-        'Content-Type': "application/x-www-form-urlencoded",
+        'Content-Type': "application/json",
         'Authorization': `Basic ${clientB64}`
       }
       const tokenResp = await Axios.post(tokenUrl, tokenBody, {headers: tokenHeaders});
