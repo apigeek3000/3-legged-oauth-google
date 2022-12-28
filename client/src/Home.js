@@ -24,7 +24,7 @@ function App() {
       
       // If local env
       // Else we are live in production
-      if (process.env.NODE_ENV === "development") {
+      if (process.env.NODE_ENV === "development") { 
         // Get from app_secrets
         const clientVars = require("./app_secrets/clientVars.json");
         domain = clientVars.domain;
